@@ -8,7 +8,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'rust_analyzer','eslint',},
+  ensure_installed = {'omnisharp',},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
@@ -31,26 +31,25 @@ lsp.preset("recommended")
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
-  cmp.setup({
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-    },
+cmp.setup({
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 
-    --    local cmp_mappings = lsp.defaults.cmp_mappings({
 	mappping = cmp.mapping.preset.insert({
-	    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-	    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-	    ['<CR>'] = cmp.mapping.confirm({select = false}),
-	    ["<C-Space>"] = cmp.mapping.complete(),
-    }),
-    preselect = 'item',
-    completion = {
-	    completeopt = 'menu,menuone,noinsert'
-    },
-    })
+		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+		["<C-Space>"] = cmp.mapping.complete(),
+		['<cr>'] = cmp.mapping.confirm({select = false})
+	}),
+	preselect = 'item',
+	completion = {
+		completeopt = 'menu,menuone,noinsert'
+	}
+})
 lsp.set_preferences({
-  sign_icons = { }
+	sign_icons = { }
 })
 
 --lsp.setup_nvim_cmp({

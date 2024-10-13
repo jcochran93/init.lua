@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
    })
    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
    use('theprimeagen/harpoon')
+   use('mbbill/undotree')
    use {
     "williamboman/mason.nvim"
 }
@@ -43,4 +44,5 @@ use {
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
 	  }
+  }
 end)

@@ -18,8 +18,7 @@ require('mason-lspconfig').setup({
   },
 })
 
-
-lsp.preset("recommended")
+-- lsp.preset("recommended")
 
 --lsp.ensure_installed({
 --  'tsserver',
@@ -30,31 +29,47 @@ lsp.preset("recommended")
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
+sources = {
+    {name = 'nvim_lsp'},
+    { name = 'buffer' },        -- Words from the current buffer
+    { name = 'path' },          -- File paths
+    { name = 'luasnip' },       -- Snippet completions (requires a snippet engine like LuaSnip)
+    { name = 'nvim_lsp_signature_help' },
+  },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
 	window = {
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
 
-	mappping = cmp.mapping.preset.insert({
+	mapping = cmp.mapping.preset.insert({
 		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
 		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-		["<C-Space>"] = cmp.mapping.complete(),
-		['<cr>'] = cmp.mapping.confirm({select = false})
-	}),
-	preselect = 'item',
+		['<C-Space>'] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ['<Tab>'] = cmp_action.tab_complete()
+        }),
+
+    preselect = 'item',
 	completion = {
 		completeopt = 'menu,menuone,noinsert'
 	}
 })
-lsp.set_preferences({
-	sign_icons = { }
-})
 
---lsp.setup_nvim_cmp({
--- mapping = cmp_mappings
---})
+-- lsp.set_preferences({
+-- 	sign_icons = { }
+-- })
+
+-- lsp.setup_nvim_cmp({
+--  mapping = cmp_mappings
+-- })
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}

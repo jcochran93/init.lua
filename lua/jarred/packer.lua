@@ -11,10 +11,10 @@ return require('packer').startup(function(use)
 	-- or                            , branch = '0.1.x',
   	requires = { {'nvim-lua/plenary.nvim'}}
    }
-   use('joshdick/onedark.vim')
+   --use('joshdick/onedark.vim')
+   use('navarasu/onedark.nvim')
    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
    use('theprimeagen/harpoon')
-   use('mbbill/undotree')
    use {
 	   "williamboman/mason.nvim"
    }

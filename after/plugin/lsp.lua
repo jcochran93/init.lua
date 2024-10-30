@@ -15,8 +15,26 @@ require('mason-lspconfig').setup({
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
+    omnisharp = function()
+        require('lspconfig').omnisharp.setup({
+            on_attach = lsp_zero.on_attach,
+            capabilities = lsp_zero.capabilities,
+            -- Enable this if you're getting file watching errors on Linux
+            -- enable_editorconfig_support = true,
+        })
+    end,
   },
 })
+
+local lspconfig = require('lspconfig')
+
+-- -- For omnisharp:
+-- lspconfig.omnisharp.setup{
+--   cmd = { "omnisharp" },
+--   -- Optional settings:
+--   filetypes = { "cs", "vb" },
+--   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git")
+-- }
 
 -- lsp.preset("recommended")
 

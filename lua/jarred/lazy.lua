@@ -70,6 +70,35 @@ local plugins = {
             "MunifTanjim/nui.nvim",
             -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         }
+    },-- lazy.nvim
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        }
+    },
+    { "rafamadriz/friendly-snippets" },
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+    },
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        -- Optional dependencies
+        dependencies = { { "echasnovski/mini.icons", opts = {} } },
+        -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
     }
 }
 

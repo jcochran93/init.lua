@@ -8,7 +8,7 @@ require('obsidian').setup {
       workspaces = {
           {
               name = "personal",
-              path = "~/Documents/Obsidian/Personal Vault/",
+              path = "~/Documents/Obsidian/Vault/",
           }
       },
 

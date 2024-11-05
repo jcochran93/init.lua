@@ -100,7 +100,6 @@ local plugins = {
         dependencies = { { "echasnovski/mini.icons", opts = {} } },
         -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
     },
-    -- Obsidian
     {
         'renerocksai/telekasten.nvim',
         dependencies = {'nvim-telescope/telescope.nvim'}
@@ -129,5 +128,4 @@ local plugins = {
             },
 
     }
-}
     require("lazy").setup(plugins, {})

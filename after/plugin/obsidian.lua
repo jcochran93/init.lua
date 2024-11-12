@@ -25,7 +25,7 @@ require('obsidian').setup {
 
   daily_notes = {
     -- Optional, if you keep daily notes in a separate directory.
-    folder = "Journal/Daily",
+    folder = "06 - Daily/Journal/Daily",
     -- Optional, if you want to change the date format for the ID of daily notes.
     date_format = "%Y-%m-%d",
     -- Optional, if you want to change the date format of the default alias of daily notes.
@@ -33,7 +33,7 @@ require('obsidian').setup {
     -- Optional, default tags to add to each new daily note created.
     -- default_tags = { "daily-notes" },
     -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-    template = 'Daily Template.md' 
+    template = 'Daily Template.md'
   },
 
   -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -150,7 +150,7 @@ require('obsidian').setup {
 
   -- Optional, for templates (see below).
   templates = {
-    folder = "Templates",
+    folder = "99 - Meta/Templates",
     date_format = "%Y-%m-%d",
     time_format = "%H:%M",
     -- A map for custom variables, the key should be the variable and the value a function
@@ -295,7 +295,7 @@ require('obsidian').setup {
     -- The default folder to place images in via `:ObsidianPasteImg`.
     -- If this is a relative path it will be interpreted as relative to the vault root.
     -- You can always override this per image by passing a full path to the command instead of just a filename.
-    img_folder = "assets/imgs",  -- This is the default
+    img_folder = "99 - Meta/images",  -- This is the default
 
     -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
     ---@return string

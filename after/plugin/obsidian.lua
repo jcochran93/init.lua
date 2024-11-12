@@ -1,3 +1,23 @@
+local function get_os()
+    if jit.os == "Windows" then
+        return {
+            path = "~/Documents/Obsidian/Personal Vault/",
+            -- Windows-specific settings
+        }
+    elseif jit.os == "macOS" then
+        return {
+            path = "/Users/YourUsername/config",
+            -- Mac-specific settings
+        }
+    else
+        return {
+            path = "/default/fallback/path",
+            -- Fallback settings
+        }
+    end
+end
+
+
 require('obsidian').setup {
   -- A list of workspace names, paths, and configuration overrides.
   -- If you use the Obsidian app, the 'path' of a workspace should generally be
@@ -8,7 +28,7 @@ require('obsidian').setup {
       workspaces = {
           {
               name = "personal",
-              path = "~/Documents/Obsidian/Vault/",
+                path = get_os().path
           }
       },
 

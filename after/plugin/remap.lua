@@ -1,5 +1,10 @@
 -- vim.g.mapleader = " "
 
+-- Easier navigation to start/end of line
+
+vim.keymap.set('n', 'H', '^')
+vim.keymap.set('n', 'L', '$')
+
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>")
 
@@ -34,6 +39,8 @@ vim.keymap.set('n', '<leader>ll', ':ObsidianLink<CR>', { desc = 'Link to another
 -- Insert tags easily
 vim.keymap.set('n', '<leader>tt', 'a#', { desc = 'Insert a tag' })
 
-
+-- Zenmode
+vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { desc = 'Toggle for ZenMode' })
+vim.keymap.set('n', '<leader>zt', ':Twilight<CR>', { desc = 'Toggle for Twilight' })
 
 vim.cmd([[set scrolloff=15]])

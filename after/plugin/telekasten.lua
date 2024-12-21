@@ -4,9 +4,9 @@ local function get_os()
             path = "~/Documents/Obsidian/Personal Vault/",
             -- Windows-specific settings
         }
-    elseif jit.os == "macOS" then
+    elseif jit.os == "OSX" then
         return {
-            path = "/Users/YourUsername/config",
+            path = "/Users/jarred/Documents/Obsidian/Vault",
             -- Mac-specific settings
         }
     else

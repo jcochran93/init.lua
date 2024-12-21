@@ -21,11 +21,11 @@ vim.g.maplocalleader = "\\"
 
 
 local plugins = {
-    {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
     {
         'nvim-telescope/telescope.nvim', version = '0.1.6',
         -- or                            , branch = '0.1.x',
-        dependencies = { {'nvim-lua/plenary.nvim'}}
+        dependencies = { {'nvim-lua/plenary.nvim'},
+    }
     },
     --'joshdick/onedark.vim'
     'navarasu/onedark.nvim',
@@ -135,5 +135,27 @@ local plugins = {
                 -- see below for full list of options 👇
             },
 
-    }
-    require("lazy").setup(plugins, {})
+            {
+                'kevinhwang91/nvim-ufo',
+                dependencies = {
+                    'kevinhwang91/promise-async',
+                    'nvim-treesitter/nvim-treesitter'
+                },
+
+                after = "nvim-lspconfig",
+            },-- Lua
+            {
+                "folke/zen-mode.nvim",
+                dependencies = -- Lua
+                {
+                    "folke/twilight.nvim",
+                    opts = {
+                    }
+                },
+                opts = {
+                }
+            },
+
+        }
+
+        require("lazy").setup(plugins, {})

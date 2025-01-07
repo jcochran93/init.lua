@@ -155,7 +155,9 @@ require('obsidian').setup {
       note:add_alias(note.title)
     end
 
+    vim.notify("Current metadata: " .. vim.inspect(note.metadata), vim.log.levels.INFO)
     local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+    -- local out = note.metadata or {}
 
     -- `note.metadata` contains any manually added fields in the frontmatter.
     -- So here we just make sure those fields are kept in the frontmatter.

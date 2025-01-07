@@ -1,7 +1,11 @@
 -- vim.g.mapleader = " "
 
--- Easier navigation to start/end of line
 
+-- Keep cursor centered when moving up/down
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Easier navigation to start/end of line
 vim.keymap.set('n', 'H', '^')
 vim.keymap.set('n', 'L', '$')
 
@@ -33,8 +37,6 @@ vim.keymap.set('n', '<leader>ob', ':ObsidianBacklinks<CR>', { desc = 'Show backl
 vim.keymap.set('n', '<leader>od', function()
   vim.cmd('ObsidianToday')
 end, { desc = 'Create or open today\'s daily note' })
--- Quickly create links to other notes
-vim.keymap.set('n', '<leader>ll', ':ObsidianLink<CR>', { desc = 'Link to another note' })
 
 -- Insert tags easily
 vim.keymap.set('n', '<leader>tt', 'a#', { desc = 'Insert a tag' })

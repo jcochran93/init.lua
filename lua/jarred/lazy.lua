@@ -59,16 +59,16 @@ local plugins = {
 		"numToStr/Comment.nvim",
 		opts = {},
 	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		},
-	},
+	-- {
+	-- 	"nvim-neo-tree/neo-tree.nvim",
+	-- 	branch = "v3.x",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+	-- 	},
+	-- },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -84,15 +84,15 @@ local plugins = {
 			-- "rcarriga/nvim-notify",
 		},
 	},
-	{
-		"stevearc/oil.nvim",
-		---@module 'oil'
-		---@type oil.SetupOpts
-		opts = {},
-		-- Optional dependencies
-		-- dependencies = { { "echasnovski/mini.icons", opts = {} } },
-		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-	},
+	-- {
+	-- 	"stevearc/oil.nvim",
+	-- 	---@module 'oil'
+	-- 	---@type oil.SetupOpts
+	-- 	opts = {},
+	-- 	-- Optional dependencies
+	-- 	-- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	-- },
 	{ "rafamadriz/friendly-snippets" },
 	{
 		"stevearc/conform.nvim",
@@ -107,10 +107,10 @@ local plugins = {
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 	},
-	{
-		"renerocksai/telekasten.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-	},
+	-- {
+	-- 	"renerocksai/telekasten.nvim",
+	-- 	dependencies = { "nvim-telescope/telescope.nvim" },
+	-- },
 	{
 		"epwalsh/obsidian.nvim",
 		version = "*", -- recommended, use latest release instead of latest commit
@@ -192,7 +192,7 @@ local plugins = {
 			{ "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
 			{ "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },
 		},
-	},
+	},{ 'echasnovski/mini.ai', version = '*' },
 }
 
 require("lazy").setup(plugins, {})

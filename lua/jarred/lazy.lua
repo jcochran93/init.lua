@@ -192,7 +192,17 @@ local plugins = {
 			{ "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
 			{ "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },
 		},
-	},{ 'echasnovski/mini.ai', version = '*' },
+	},
+    { 'echasnovski/mini.ai', version = '*' },
+    { 'mistweaverco/kulala.nvim', opts = {} },
+    {
+      "oysandvik94/curl.nvim",
+      cmd = { "CurlOpen" },
+      dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = true,
+    }
 }
 
 require("lazy").setup(plugins, {})

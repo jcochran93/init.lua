@@ -17,6 +17,6 @@ local function get_os()
     end
 end
 
-require('telekasten').setup({
-  home = vim.fn.expand(get_os().path), -- Put the name of your notes directory here
-})
+-- require('telekasten').setup({
+--   home = vim.fn.expand(get_os().path), -- Put the name of your notes directory here
+-- })

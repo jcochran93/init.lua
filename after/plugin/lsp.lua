@@ -29,12 +29,12 @@ require('mason-lspconfig').setup({
 local lspconfig = require('lspconfig')
 
 -- -- For omnisharp:
--- lspconfig.omnisharp.setup{
---   cmd = { "omnisharp" },
---   -- Optional settings:
---   filetypes = { "cs", "vb" },
---   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git")
--- }
+lspconfig.omnisharp.setup{
+  cmd = { "omnisharp" },
+  -- Optional settings:
+  filetypes = { "cs", "vb" },
+  root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git")
+}
 
 -- lsp.preset("recommended")
 

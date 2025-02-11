@@ -11,7 +11,7 @@ local function get_os()
         }
     else
         return {
-            path = "/Users/jarred/Documents/Obsidian/Vault",
+            path = "/mnt/c/Users/JarredCochran/Documents/Vault/Personal Vault/",
             -- Fallback settings
         }
     end

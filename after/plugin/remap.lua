@@ -21,6 +21,10 @@ vim.keymap.set('n', '<leader>fs', function()
 end)
 vim.keymap.set('n', '<leader>fu', builtin.lsp_references, {})
 
+vim.keymap.set('n', '<leader>fb', function()
+  builtin.buffers { ignore_current_buffer = true }
+end, {})
+
 -- Neo-Tree
 vim.keymap.set("n", "<leader>nw" ,"<CMD>Neotree<CR>")
 vim.keymap.set("n", "<leader>no" ,"<CMD>Neotree buffers<CR>")
@@ -42,8 +46,11 @@ end, { desc = 'Create or open today\'s daily note' })
 vim.keymap.set('n', '<leader>tt', 'a#', { desc = 'Insert a tag' })
 
 -- Zenmode
-vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { desc = 'Toggle for ZenMode' })
-vim.keymap.set('n', '<leader>zt', ':Twilight<CR>', { desc = 'Toggle for Twilight' })
+-- vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { desc = 'Toggle for ZenMode' })
+-- vim.keymap.set('n', '<leader>zt', ':Twilight<CR>', { desc = 'Toggle for Twilight' })
+
+-- Terminal
+vim.keymap.set('t', '<C_/>', function() Snacks.terminal() end, {desc = "Toggle Terminal"})
 
 -- Kulala
 -- vim.keymap.set('n', '<CR>', '<cmd>lua require("kulala").run()<cr>', { noremap = true, silent = true, desc = "Execute the request" })

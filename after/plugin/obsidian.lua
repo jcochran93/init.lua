@@ -1,7 +1,7 @@
 local function get_os()
     if jit.os == "Windows" then
         return {
-            path = "~/Documents/Obsidian/Personal Vault/",
+            path = "~/Documents/Vault/Personal Vault/",
             -- Windows-specific settings
         }
     elseif jit.os == "OSX" then
@@ -11,7 +11,7 @@ local function get_os()
         }
     else
         return {
-            path = "/Users/jarred/Documents/Obsidian/Vault",
+            path = "/mnt/c/Users/JarredCochran/Documents/Vault/Personal Vault/",
             -- Fallback settings
         }
     end

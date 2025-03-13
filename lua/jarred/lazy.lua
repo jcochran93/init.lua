@@ -59,16 +59,6 @@ local plugins = {
 		"numToStr/Comment.nvim",
 		opts = {},
 	},
-	-- {
-	-- 	"nvim-neo-tree/neo-tree.nvim",
-	-- 	branch = "v3.x",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-	-- 	},
-	-- },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -84,15 +74,6 @@ local plugins = {
 			-- "rcarriga/nvim-notify",
 		},
 	},
-	-- {
-	-- 	"stevearc/oil.nvim",
-	-- 	---@module 'oil'
-	-- 	---@type oil.SetupOpts
-	-- 	opts = {},
-	-- 	-- Optional dependencies
-	-- 	-- dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	-- 	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-	-- },
 	{ "rafamadriz/friendly-snippets" },
 	{
 		"stevearc/conform.nvim",
@@ -143,17 +124,6 @@ local plugins = {
 
 		after = "nvim-lspconfig",
 	}, -- Lua
-	-- {
-	--     "folke/zen-mode.nvim",
-	--     dependencies = -- Lua
-	--     {
-	--         "folke/twilight.nvim",
-	--         opts = {
-	--         }
-	--     },
-	--     opts = {
-	--     }
-	-- },
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
@@ -172,6 +142,37 @@ local plugins = {
 			scroll = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
+            lazygit = {
+                -- automatically configure lazygit to use the current colorscheme
+                -- and integrate edit with the current neovim instance
+                configure = true,
+                -- extra configuration for lazygit that will be merged with the default
+                -- snacks does NOT have a full yaml parser, so if you need `"test"` to appear with the quotes
+                -- you need to double quote it: `"\"test\""`
+                -- config = {
+                --     os = { editPreset = "nvim-remote" },
+                --     gui = {
+                --         -- set to an empty string "" to disable icons
+                --         nerdFontsVersion = "3",
+                --     },
+               -- },
+                -- Theme for lazygit
+                theme = {
+                    [241]                      = { fg = "Special" },
+                    activeBorderColor          = { fg = "MatchParen", bold = true },
+                    cherryPickedCommitBgColor  = { fg = "Identifier" },
+                    cherryPickedCommitFgColor  = { fg = "Function" },
+                    defaultFgColor             = { fg = "Normal" },
+                    inactiveBorderColor        = { fg = "FloatBorder" },
+                    optionsTextColor           = { fg = "Function" },
+                    searchingActiveBorderColor = { fg = "MatchParen", bold = true },
+                    selectedLineBgColor        = { bg = "Visual" }, -- set to `default` to have no background colour
+                    unstagedChangesColor       = { fg = "DiagnosticError" },
+                },
+                win = {
+                    style = "lazygit",
+                },
+            },
 		},
 		keys = {
 			{ "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode", },
@@ -187,7 +188,7 @@ local plugins = {
 			{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit", },
 			{ "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)", },
 			{ "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications", },
-			{ "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal", },
+			{ "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal", mode = {"n", "t"}, },
 			{ "<c-_>", function() Snacks.terminal() end, desc = "which_key_ignore", },
 			{ "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
 			{ "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },
@@ -202,7 +203,25 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
     config = true,
-    }
+    },
+    {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  keys = {
+    {
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer Local Keymaps (which-key)",
+    },
+  },
+}
 }
 
 require("lazy").setup(plugins, {})

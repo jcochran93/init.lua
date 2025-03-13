@@ -1,5 +1,10 @@
 require("conform").setup({
-  formatters_by_ft = {
+ format_on_save = {
+    -- These options will be passed to conform.format()
+    timeout_ms = 2500,
+    lsp_format = "fallback",
+  },
+  formatters_by_ft ={
     lua = { "stylua" },
     -- Conform will run multiple formatters sequentially
     python = { "isort", "black" },
@@ -8,6 +13,11 @@ require("conform").setup({
     -- Conform will run the first available formatter
     javascript = { "prettierd", "prettier", stop_after_first = true },
     cs = {"csharpier"},
+  },
+  formatters = {
+    csharpier = {
+      timeout = 10000,  -- Increase from default (likely 1000ms) to 10 seconds
+    },
   },
 })
 

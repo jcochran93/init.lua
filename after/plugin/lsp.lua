@@ -8,33 +8,58 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'omnisharp',},
+  -- ensure_installed = {'omnisharp',},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
-    omnisharp = function()
-        require('lspconfig').omnisharp.setup({
-            on_attach = lsp_zero.on_attach,
-            capabilities = lsp_zero.capabilities,
-            -- Enable this if you're getting file watching errors on Linux
-            -- enable_editorconfig_support = true,
-        })
-    end,
+    -- omnisharp = function()
+    --     require('lspconfig').omnisharp.setup({
+    --         on_attach = lsp_zero.on_attach,
+    --         capabilities = lsp_zero.capabilities,
+    --         -- Enable this if you're getting file watching errors on Linux
+    --         -- enable_editorconfig_support = true,
+    --     })
+    -- end,
   },
 })
 
 local lspconfig = require('lspconfig')
 
 -- -- For omnisharp:
-lspconfig.omnisharp.setup{
-  cmd = { "omnisharp" },
-  -- Optional settings:
-  filetypes = { "cs", "vb" },
-  root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git")
-}
+-- lspconfig.omnisharp.setup{
+--   cmd = { "omnisharp" },
+--   -- Optional settings:
+--   filetypes = { "cs", "vb" },
+--   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git")
+-- }
+
+lspconfig.csharp_ls.setup({
+  -- Basic configuration
+on_attach = on_attach,
+  cmd = { "csharp-ls" },
+  init_options = {
+    -- Explicitly specify MSBuild path
+    msbuildPath = "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Current\\Bin\\MSBuild.exe"
+  },
+  filetypes = { "cs" },
+  root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
+  init_options = {
+    AutomaticWorkspaceInit = true,
+  },
+  -- Increase timeouts if needed for Windows filesystem access
+  settings = {
+    -- Any specific settings can go here
+  },
+  
+  -- If you're experiencing slow performance, you can adjust these
+  flags = {
+    debounce_text_changes = 150,
+  },
+})
+
 
 -- lsp.preset("recommended")
 

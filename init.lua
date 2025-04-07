@@ -1,4 +1,5 @@
 require("jarred")
+-- require("plugins")
 
 vim.env.PATH = vim.env.PATH .. ':/snap/bin/'
 vim.wo.relativenumber = true
@@ -10,7 +11,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.o.conceallevel = 1
 vim.o.ignorecase = true
 
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
 	local config = vim.diagnostic.config

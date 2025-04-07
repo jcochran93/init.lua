@@ -142,6 +142,13 @@ local plugins = {
 			scroll = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
+			zen ={ toggles = {
+				dim = false,
+				-- git_signs = false,
+				-- mini_diff_signs = false,
+				-- diagnostics = false,
+				-- inlay_hints = false,
+			}},
             lazygit = {
                 -- automatically configure lazygit to use the current colorscheme
                 -- and integrate edit with the current neovim instance
@@ -149,13 +156,13 @@ local plugins = {
                 -- extra configuration for lazygit that will be merged with the default
                 -- snacks does NOT have a full yaml parser, so if you need `"test"` to appear with the quotes
                 -- you need to double quote it: `"\"test\""`
-                -- config = {
-                --     os = { editPreset = "nvim-remote" },
-                --     gui = {
-                --         -- set to an empty string "" to disable icons
-                --         nerdFontsVersion = "3",
-                --     },
-               -- },
+                config = {
+                    os = { editPreset = "nvim-remote" },
+                    gui = {
+                        -- set to an empty string "" to disable icons
+                        nerdFontsVersion = "3",
+                    },
+               },
                 -- Theme for lazygit
                 theme = {
                     [241]                      = { fg = "Special" },
@@ -220,6 +227,25 @@ local plugins = {
       end,
       desc = "Buffer Local Keymaps (which-key)",
     },
+  },
+},
+
+{
+  "christoomey/vim-tmux-navigator",
+  cmd = {
+    "TmuxNavigateLeft",
+    "TmuxNavigateDown",
+    "TmuxNavigateUp",
+    "TmuxNavigateRight",
+    "TmuxNavigatePrevious",
+    "TmuxNavigatorProcessList",
+  },
+  keys = {
+    { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+    { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+    { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+    { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
   },
 }
 }

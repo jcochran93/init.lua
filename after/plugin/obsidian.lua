@@ -1,37 +1,35 @@
 local function get_os()
-    if jit.os == "Windows" then
-        return {
-            path = "~/Documents/Vault/Personal Vault/",
-            -- Windows-specific settings
-        }
-    elseif jit.os == "OSX" then
-        return {
-            path = "/Users/jarred/Documents/Obsidian/Vault",
-            -- Mac-specific settings
-        }
-    else
-        return {
-            path = "/mnt/c/Users/JarredCochran/Documents/Vault/Personal Vault/",
-            -- Fallback settings
-        }
-    end
+  if jit.os == "Windows" then
+    return {
+      path = "~/Documents/Vault/Personal Vault/",
+      -- Windows-specific settings
+    }
+  elseif jit.os == "OSX" then
+    return {
+      path = "/Users/jarred/Documents/Obsidian/Vault",
+      -- Mac-specific settings
+    }
+  else
+    return {
+      path = "/mnt/c/Users/JarredCochran/Documents/Vault/Personal Vault/",
+      -- Fallback settings
+    }
+  end
 end
 
-
-
-require('obsidian').setup {
+require("obsidian").setup({
   -- A list of workspace names, paths, and configuration overrides.
   -- If you use the Obsidian app, the 'path' of a workspace should generally be
   -- your vault root (where the `.obsidian` folder is located).
   -- When obsidian.nvim is loaded by your plugin manager, it will automatically set
   -- the workspace to the first workspace in the list whose `path` is a parent of the
   -- current markdown file being edited.
-      workspaces = {
-          {
-              name = "personal",
-                path = get_os().path
-          }
-      },
+  workspaces = {
+    {
+      name = "personal",
+      path = get_os().path,
+    },
+  },
 
   -- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
   -- 'workspaces'. For example:
@@ -54,16 +52,16 @@ require('obsidian').setup {
     -- Optional, default tags to add to each new daily note created.
     -- default_tags = { "daily-notes" },
     -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-    template = 'Daily Template.md'
+    template = "Daily Template.md",
   },
 
   -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
-  completion = {
-    -- Set to false to disable completion.
-    nvim_cmp = true,
-    -- Trigger completion at 2 chars.
-    min_chars = 2,
-  },
+  -- completion = {
+  --   -- Set to false to disable completion.
+  --   nvim_cmp = true,
+  --   -- Trigger completion at 2 chars.
+  --   min_chars = 2,
+  -- },
 
   -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
   -- way then set 'mappings = {}'.
@@ -88,7 +86,7 @@ require('obsidian').setup {
         return require("obsidian").util.smart_action()
       end,
       opts = { buffer = true, expr = true },
-    }
+    },
   },
 
   -- Where to put new notes. Valid options are
@@ -162,7 +160,7 @@ require('obsidian').setup {
     -- `note.metadata` contains any manually added fields in the frontmatter.
     -- So here we just make sure those fields are kept in the frontmatter.
     -- if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-    if note.metadata ~= nil  then
+    if note.metadata ~= nil then
       for k, v in pairs(note.metadata) do
         out[k] = v
       end
@@ -185,7 +183,7 @@ require('obsidian').setup {
   ---@param url string
   follow_url_func = function(url)
     -- Open the URL in the default web browser.
-    vim.fn.jobstart({"open", url})  -- Mac OS
+    vim.fn.jobstart({ "open", url }) -- Mac OS
     -- vim.fn.jobstart({"xdg-open", url})  -- linux
     -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
     -- vim.ui.open(url) -- need Neovim 0.10.0+
@@ -195,7 +193,7 @@ require('obsidian').setup {
   -- file it will be ignored but you can customize this behavior here.
   ---@param img string
   follow_img_func = function(img)
-    vim.fn.jobstart { "qlmanage", "-p", img }  -- Mac OS quick look preview
+    vim.fn.jobstart({ "qlmanage", "-p", img }) -- Mac OS quick look preview
     -- vim.fn.jobstart({"xdg-open", url})  -- linux
     -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
   end,
@@ -271,9 +269,9 @@ require('obsidian').setup {
   -- Optional, configure additional syntax highlighting / extmarks.
   -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
   ui = {
-    enable = true,  -- set to false to disable all additional syntax features
-    update_debounce = 200,  -- update delay after a text change (in milliseconds)
-    max_file_length = 5000,  -- disable UI features for files with more than this many lines
+    enable = true, -- set to false to disable all additional syntax features
+    update_debounce = 200, -- update delay after a text change (in milliseconds)
+    max_file_length = 5000, -- disable UI features for files with more than this many lines
     -- Define how various check-boxes are displayed
     checkboxes = {
       -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
@@ -318,7 +316,7 @@ require('obsidian').setup {
     -- The default folder to place images in via `:ObsidianPasteImg`.
     -- If this is a relative path it will be interpreted as relative to the vault root.
     -- You can always override this per image by passing a full path to the command instead of just a filename.
-    img_folder = "99 - Meta/images",  -- This is the default
+    img_folder = "99 - Meta/images", -- This is the default
 
     -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
     ---@return string
@@ -338,4 +336,4 @@ require('obsidian').setup {
       return string.format("![%s](%s)", path.name, path)
     end,
   },
-}
+})

@@ -1,3 +1,8 @@
-.DS_Store
-plugin/*
-startup.log
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data

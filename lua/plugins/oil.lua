@@ -4,8 +4,9 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
-      default_file_explorer = false,
+      default_file_explorer = true,
       view_options = { show_hidden = true },
+      skip_confirm_for_simple_edits = true,
       keymaps = {
         ["<C-h>"] = false,
         ["<C-l>"] = false,

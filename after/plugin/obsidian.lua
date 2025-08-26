@@ -56,12 +56,12 @@ require("obsidian").setup({
   },
 
   -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
-  -- completion = {
-  --   -- Set to false to disable completion.
-  --   nvim_cmp = true,
-  --   -- Trigger completion at 2 chars.
-  --   min_chars = 2,
-  -- },
+  completion = {
+    -- Set to false to disable completion.
+    nvim_cmp = true,
+    -- Trigger completion at 2 chars.
+    min_chars = 2,
+  },
 
   -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
   -- way then set 'mappings = {}'.
@@ -313,6 +313,7 @@ require("obsidian").setup({
 
   -- Specify how to handle attachments.
   attachments = {
+    confirm_img_paste = false,
     -- The default folder to place images in via `:ObsidianPasteImg`.
     -- If this is a relative path it will be interpreted as relative to the vault root.
     -- You can always override this per image by passing a full path to the command instead of just a filename.
